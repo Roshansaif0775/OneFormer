@@ -9,6 +9,7 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 # Modified by Bowen Cheng from https://github.com/fundamentalvision/Deformable-DETR
 
+
 from __future__ import absolute_import
 from __future__ import print_function
 from __future__ import division
@@ -18,18 +19,16 @@ import torch.nn.functional as F
 from torch.autograd import Function
 from torch.autograd.function import once_differentiable
 
-if torch.cuda.is_available():
-    try:
-        import MultiScaleDeformableAttention as MSDA
-    except ModuleNotFoundError as e:
-        info_string = (
-            "\n\nPlease compile MultiScaleDeformableAttention CUDA op with the following commands:\n"
-            "\t`cd mask2former/modeling/pixel_decoder/ops`\n"
-            "\t`sh make.sh`\n"
-        )
-        raise ModuleNotFoundError(info_string)
-else:
-    MultiScaleDeformableAttention = None
+MultiScaleDeformableAttention = None
+# try:
+#     import MultiScaleDeformableAttention as MSDA
+# except ModuleNotFoundError as e:
+#     info_string = (
+#         "\n\nPlease compile MultiScaleDeformableAttention CUDA op with the following commands:\n"
+#         "\t`cd oneformer/modeling/pixel_decoder/ops`\n"
+#         "\t`sh make.sh`\n"
+#     )
+#     raise ModuleNotFoundError(info_string)
 
 
 class MSDeformAttnFunction(Function):
