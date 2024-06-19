@@ -15,6 +15,6 @@ inflect==7.2.1
 diffdist==0.1
 pytorch_lightning==2.3.0
 tqdm==4.66.4
-mmcv==2.2.0
+mmcv==1.6.2
 -f https://shi-labs.com/natten/wheels/
 natten==0.17.1
